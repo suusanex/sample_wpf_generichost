@@ -1,0 +1,2 @@
+# sample_wpf_generichost
+WPFへのGenericHostへの組み込みを、TemplateStudioと手動のそれぞれで行うサンプル
