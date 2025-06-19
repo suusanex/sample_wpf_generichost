@@ -1,13 +1,12 @@
-﻿using System.Windows.Controls;
-
-using MahApps.Metro.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 using WPFTemplateStudio.Contracts.Views;
 using WPFTemplateStudio.ViewModels;
 
 namespace WPFTemplateStudio.Views;
 
-public partial class ShellWindow : MetroWindow, IShellWindow
+public partial class ShellWindow : Window, IShellWindow
 {
     public ShellWindow(ShellViewModel viewModel)
     {

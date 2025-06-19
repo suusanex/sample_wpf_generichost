@@ -1,11 +1,9 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35527.113 d17.12
+VisualStudioVersion = 17.12.35527.113
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTemplateStudio", "WPFTemplateStudio\WPFTemplateStudio.csproj", "{14ADF332-A64E-4450-BB5F-FDA89AE4E08D}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WPFTemplateStudio.Core", "WPFTemplateStudio.Core\WPFTemplateStudio.Core.csproj", "{BF6DFE0D-7D0F-406E-A1B6-31D656287B07}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfApp1", "WpfApp1\WpfApp1.csproj", "{8461EF78-A949-4D33-BA03-97E7CE0AA22F}"
 EndProject
@@ -19,10 +17,6 @@ Global
 		{14ADF332-A64E-4450-BB5F-FDA89AE4E08D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{14ADF332-A64E-4450-BB5F-FDA89AE4E08D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{14ADF332-A64E-4450-BB5F-FDA89AE4E08D}.Release|Any CPU.Build.0 = Release|Any CPU
-		{BF6DFE0D-7D0F-406E-A1B6-31D656287B07}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BF6DFE0D-7D0F-406E-A1B6-31D656287B07}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BF6DFE0D-7D0F-406E-A1B6-31D656287B07}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BF6DFE0D-7D0F-406E-A1B6-31D656287B07}.Release|Any CPU.Build.0 = Release|Any CPU
 		{8461EF78-A949-4D33-BA03-97E7CE0AA22F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{8461EF78-A949-4D33-BA03-97E7CE0AA22F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8461EF78-A949-4D33-BA03-97E7CE0AA22F}.Release|Any CPU.ActiveCfg = Release|Any CPU
