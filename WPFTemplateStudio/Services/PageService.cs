@@ -21,7 +21,7 @@ public class PageService : IPageService
 
     public Type GetPageType(string key)
     {
-        Type pageType;
+        Type? pageType;
         lock (_pages)
         {
             if (!_pages.TryGetValue(key, out pageType))
@@ -36,9 +36,8 @@ public class PageService : IPageService
     public Page GetPage(string key)
     {
         var pageType = GetPageType(key);
-        return _serviceProvider.GetService(pageType) as Page;
+        return (Page)(_serviceProvider.GetService(pageType) ?? throw new NullReferenceException($"GetService({pageType})"));
     }
-
     private void Configure<VM, V>()
         where VM : ObservableObject
         where V : Page
@@ -46,6 +45,7 @@ public class PageService : IPageService
         lock (_pages)
         {
             var key = typeof(VM).FullName;
+            if (key == null) throw new NullReferenceException($"{typeof(VM)} FullName is null");
             if (_pages.ContainsKey(key))
             {
                 throw new ArgumentException($"The key {key} is already configured in PageService");

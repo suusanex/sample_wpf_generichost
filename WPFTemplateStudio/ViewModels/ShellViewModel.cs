@@ -10,19 +10,19 @@ namespace WPFTemplateStudio.ViewModels;
 public class ShellViewModel : ObservableObject
 {
     private readonly INavigationService _navigationService;
-    private RelayCommand _goBackCommand;
-    private RelayCommand _loadedCommand;
-    private RelayCommand _unloadedCommand;
+    public RelayCommand GoBackCommand { get; }
 
-    public RelayCommand GoBackCommand => _goBackCommand ?? (_goBackCommand = new RelayCommand(OnGoBack, CanGoBack));
+    public ICommand LoadedCommand { get; }
 
-    public ICommand LoadedCommand => _loadedCommand ?? (_loadedCommand = new RelayCommand(OnLoaded));
+    public ICommand UnloadedCommand { get; }
 
-    public ICommand UnloadedCommand => _unloadedCommand ?? (_unloadedCommand = new RelayCommand(OnUnloaded));
 
     public ShellViewModel(INavigationService navigationService)
     {
         _navigationService = navigationService;
+        GoBackCommand = new RelayCommand(OnGoBack, CanGoBack);
+        LoadedCommand = new RelayCommand(OnLoaded);
+        UnloadedCommand = new RelayCommand(OnUnloaded);
     }
 
     private void OnLoaded()
@@ -41,6 +41,6 @@ public class ShellViewModel : ObservableObject
     private void OnGoBack()
         => _navigationService.GoBack();
 
-    private void OnNavigated(object sender, string viewModelName)
+    private void OnNavigated(object? sender, string? viewModelName)
         => GoBackCommand.NotifyCanExecuteChanged();
 }

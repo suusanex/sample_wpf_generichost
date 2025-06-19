@@ -2,5 +2,5 @@
 
 public class AppConfig
 {
-    public string PrivacyStatement { get; set; }
+    public string? PrivacyStatement { get; set; }
 }

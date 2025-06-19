@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 using WPFTemplateStudio.Contracts.Activation;
 using WPFTemplateStudio.Contracts.Services;
@@ -12,7 +13,7 @@ public class ApplicationHostService : IHostedService
     private readonly IServiceProvider _serviceProvider;
     private readonly INavigationService _navigationService;
     private readonly IEnumerable<IActivationHandler> _activationHandlers;
-    private IShellWindow _shellWindow;
+    private IShellWindow? _shellWindow;
     private bool _isInitialized;
 
     public ApplicationHostService(IServiceProvider serviceProvider, IEnumerable<IActivationHandler> activationHandlers, INavigationService navigationService)
@@ -69,10 +70,10 @@ public class ApplicationHostService : IHostedService
         if (App.Current.Windows.OfType<IShellWindow>().Count() == 0)
         {
             // Default activation that navigates to the apps default page
-            _shellWindow = _serviceProvider.GetService(typeof(IShellWindow)) as IShellWindow;
+            _shellWindow = _serviceProvider.GetRequiredService<IShellWindow>();
             _navigationService.Initialize(_shellWindow.GetNavigationFrame());
             _shellWindow.ShowWindow();
-            _navigationService.NavigateTo(typeof(MainViewModel).FullName);
+            _navigationService.NavigateTo(typeof(MainViewModel).FullName ?? throw new Exception("MainViewModel full name is null"));
             await Task.CompletedTask;
         }
     }

@@ -23,11 +23,7 @@ namespace WPFTemplateStudio;
 // Tracking issue for improving this is https://github.com/dotnet/wpf/issues/1946
 public partial class App : Application
 {
-    private IHost _host;
-
-    public T GetService<T>()
-        where T : class
-        => _host.Services.GetService(typeof(T)) as T;
+    private IHost? _host;
 
     public App()
     {
@@ -35,7 +31,7 @@ public partial class App : Application
 
     private async void OnStartup(object sender, StartupEventArgs e)
     {
-        var appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location);
+        var appLocation = AppContext.BaseDirectory;
 
         // For more information about .NET generic host see  https://docs.microsoft.com/aspnet/core/fundamentals/host/generic-host?view=aspnetcore-3.0
         _host = Host.CreateDefaultBuilder(e.Args)
@@ -77,8 +73,8 @@ public partial class App : Application
 
     private async void OnExit(object sender, ExitEventArgs e)
     {
-        await _host.StopAsync();
-        _host.Dispose();
+        await (_host?.StopAsync() ?? Task.CompletedTask);
+        _host?.Dispose();
         _host = null;
     }
 
